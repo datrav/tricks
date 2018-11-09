@@ -1,0 +1,17 @@
+# Download the ODBC driver:
+wget https://dev.mysql.com/get/Downloads/Connector-ODBC/5.3/mysql-connector-odbc-5.3.10-linux-ubuntu16.04-x86-64bit.tar.gz
+
+# Extract:
+tar -xvf mysql-connector-odbc-5.3.10-linux-ubuntu16.04-x86-64bit.tar.gz
+
+# Copy the driver to the ODBC folder:
+sudo cp mysql-connector-odbc-5.3.10-linux-ubuntu16.04-x86-64bit/lib/libmyodbc5* /usr/lib/x86_64-linux-gnu/odbc/
+
+# Install additional libs
+sudo apt install odbcinst1debian2
+
+# Install driver:
+mysql-connector-odbc-5.3.10-linux-ubuntu16.04-x86-64bit/bin/myodbc-installer -d -a -n "MySQL" -t "DRIVER=/usr/lib/x86_64-linux-gnu/odbc/libmyodbc5w.so;"
+
+# Create connection 'test' at /etc/odbc:
+sudo mysql-connector-odbc-5.3.10-linux-ubuntu16.04-x86-64bit/bin/myodbc-installer -s -a -c2 -n "test" -t "DRIVER=MySQL;SERVER=127.0.0.1;DATABASE=mysql;UID=root;PWD=password"
