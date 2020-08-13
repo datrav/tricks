@@ -2815,6 +2815,8 @@ pascal
 pass
 passion
 passw0rd
+pa$$word
+pa$$w0rd
 passwd
 password
 Password
